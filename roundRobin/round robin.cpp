@@ -1,8 +1,9 @@
 #include<iostream> 
 #include<bits/stdc++.h>
 using namespace std; 
+
 vector<int> processes,bt,wt,atime,tat;
-void fWaitingTime(int n,int quantum) 
+void findWaitTime(int n,int quantum) 
 { 
 	vector<int> rem_bt; 
 	for (int i = 0 ; i < n ; i++) 
@@ -34,7 +35,7 @@ void fWaitingTime(int n,int quantum)
 	} 
     
 } 
-void fTurnAroundTime(int n) 
+void findTurnAroundTime(int n) 
 { 
     
 	for (int i = 0; i < n ; i++) 
@@ -42,11 +43,11 @@ void fTurnAroundTime(int n)
 		tat.push_back( bt[i] + wt[i]); 
     }
 } 
-void findavgTime(int n,int quantum) 
+void findAvgTime(int n,int quantum) 
 { 
     float total_wt = 0, total_tat = 0; 
-	fWaitingTime(n,quantum); 
-	fTurnAroundTime(n); 
+	findWaitTime(n,quantum); 
+	findTurnAroundTime(n); 
 	cout << "Processes "<<" Arrival time "<< " Burst time "<< " Waiting time " << " Turn around time\n"; 
 	for (int i=0; i<n; i++) 
 	{ 
@@ -78,6 +79,6 @@ int main()
     }
     cout<<"Enter the quantum size for each process "<<endl;
     cin>>quantum;
-	findavgTime(x,quantum); 
+	findAvgTime(x,quantum); 
 	return 0; 
 } 
